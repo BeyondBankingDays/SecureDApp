@@ -10,7 +10,7 @@
   "author": "secureD",
   "license": "ISC",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   }
 
 }
