@@ -1,4 +1,9 @@
-app.controller('accessController', function(){
+app.controller('accessController',['$scope', function($scope){
 
+    $scope.selectedFilter = 'request';
 
-});
+    $scope.changeSelection = function(selectedOption){
+        $scope.selectedFilter = selectedOption;
+    }
+
+}]);

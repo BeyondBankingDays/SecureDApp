@@ -1,7 +1,12 @@
 <div class="animated fadeIn">
+    <div class="filter">
+        <div>Filter by
+            <span ng-class="{'active-text': selectedFilter === 'request'}" ng-click="changeSelection('request')">Request</span>
+            <span ng-class="{'active-text': selectedFilter === 'document'}" ng-click="changeSelection('document')">Document</span>
+        </div>
+    </div>
 
-
-Access
-
-
+    <div class="search">
+        <input placeholder="Search" class="search-input"/>
+    </div>
 </div>
