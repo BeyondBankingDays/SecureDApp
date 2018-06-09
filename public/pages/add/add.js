@@ -36,7 +36,7 @@ angular.module('app.addController', ['ngFileUpload'])
                     var object = {};
                     object.docType = $scope.selectedDocType[i];
                     object.docName = file.metaData.name;
-                    object.userId = "testId";
+                    object.userId = localStorage.getItem("user_id");
 
                     var formData = new FormData();
                     var documentObject = JSON.stringify(object);

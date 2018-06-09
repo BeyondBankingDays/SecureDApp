@@ -1,5 +1,6 @@
 angular.module('app.registrationController', [])
-    .controller('registrationController', ['$scope', '$http', '$location', '$timeout', function ($scope, $http, $location, $timeout) {
+    .controller('registrationController', ['$scope', '$http',
+        '$location', '$timeout','$window', function ($scope, $http, $location, $timeout,$window) {
 
         $scope.regObj = {
             password: '',
@@ -8,6 +9,7 @@ angular.module('app.registrationController', [])
             first_name: '',
             email: ''
         };
+            $window.userObject={};
         $scope.reg = 'pending';
 
         $scope.registerUser = function () {
@@ -15,10 +17,11 @@ angular.module('app.registrationController', [])
             $http.post('https://beyondbanking.openbankproject.com/obp/v2.0.0/users', JSON.stringify($scope.regObj)).then(function (success) {
                 console.log(success.data);
                 $scope.reg = 'success';
-                $scope.newUsername = success.data.username;
+                localStorage.setItem("user_id",success.data.user_id);
+                localStorage.setItem("username",success.data.username);
                 $timeout(function () {
-                    $location.path('/homepage');
-                }, 2000);
+                    $location.path('/homepage').search({user_id: $window.userObject.user_id});
+                }, 1000);
             }, function (error) {
                 console.log(error.data);
                 $scope.reg = 'error';
