@@ -70,6 +70,11 @@ body{
     width: 15px;
     height: 15px;
 }
+.settings-icon{
+    background: url('settings.png') no-repeat -4px -37px;
+    width: 1px;
+    height: 1px;
+}
 
 .item-list{
     padding-top:5px;
