@@ -1,15 +1,21 @@
 <div class="animated fadeIn">
+  <div  ngf-select="addFiles($files, $invalidFiles)" multiple class="button" style="margin-left:32%;text-align:center;margin-top:30%;border:0" > 
+    <img src="add-icon.png"/>
+  </div>
 
+  <div style="text-align:center">
+    CLICK ON THE BUTTON ABOVE TO UPLOAD DOCUMENTS
+  </div>
 
-
-
-<div style="text-align:center;margin-top:40%;">
-<img src="add-icon.png"/>
-</div>
-
-<div style="text-align:center">
-  CLICK ON THE BUTTON ABOVE TO UPLOAD DOCUMENTS
-</div>
-
-
+  <div ng-repeat="file in files">
+    <div class="active-text">{{file.metaData.name}}</div>
+            <div class="items">
+            <div class="item-list">
+                Document Type
+                <div>
+                    <select ng-model="selectedDocType" style="background-color: transparent;width:97%; color:black; border: 0;" ng-options="x for x in docTypes">
+                </div>
+            </div>
+            </div>
+  </div>
 </div>
