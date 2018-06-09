@@ -26,7 +26,7 @@ console.log("Server running at http://localhost:%d", port);
 // app.get('*', (req, res) =>  res.sendFile("index.html", {"root": __dirname}));
 
 app.get('*', function (req, res) {
- res.type('text/html');
+ // res.type('text/html');
     res.sendFile("./public/index.html");
 
 });
