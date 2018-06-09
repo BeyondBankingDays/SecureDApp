@@ -1,5 +1,5 @@
 <div class="animated fadeIn">
-  <div  ngf-select="addFiles($files, $invalidFiles)" multiple class="button" style="margin-left:32%;text-align:center;margin-top:30%;border:0" > 
+  <div  ngf-select="addFiles($files, $invalidFiles)" multiple class="button" style="margin-left:32%;text-align:center;margin-top:10%;border:0" > 
     <img src="add-icon.png"/>
   </div>
 
@@ -13,9 +13,13 @@
             <div class="item-list">
                 Document Type
                 <div>
-                    <select ng-model="selectedDocType" style="background-color: transparent;width:97%; color:black; border: 0;" ng-options="x for x in docTypes">
+                    <select ng-model="selectedDocType" style="background-color: transparent;width:97%; color:black; border: 0;" ng-options="x for x in docTypes"></select>
                 </div>
             </div>
             </div>
+  </div>
+<br><br>
+  <div ng-if="files.length>0">
+    <button class="btn primary" style="float:right;margin-right:10px;" ng-click="uploadFiles()">Upload</button>
   </div>
 </div>
