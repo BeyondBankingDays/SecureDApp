@@ -5,8 +5,8 @@ angular.module('securedApp.controllers', []);
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl : 'pages/homepage/homepage.html',
-            controller  : 'homepageController'
+            templateUrl : 'pages/registration/registration.html',
+            controller  : 'registrationController'
         })
 
         .when('/add',{
@@ -22,5 +22,9 @@ app.config(function($routeProvider) {
         .when('/profile',{
             templateUrl : 'pages/profile/profile.html',
             controller  : 'profileController'
+        })
+        .when('/homepage',{
+            templateUrl : 'pages/homepage/homepage.html',
+            controller  : 'homepageController'
         });
 });

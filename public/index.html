@@ -25,7 +25,7 @@
 </head>
 
 <body>
-<div ng-include="'template/header.html'">  </div>
+<div ng-if="$location.path() != '/registration'" ng-include="'template/header.html'">  </div>
 <div class="content" data-viewport-height="100">
     <ng-view></ng-view>
 </div>

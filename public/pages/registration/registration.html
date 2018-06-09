@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+
+    <div style="text-align:center">WELCOME TO</div>
+    <div style="text-align:center">
+        <img src="logo.png"/>
+    </div>
+    
+      <div class="requests" ng-if="reg === 'pending'">
+          <div class="active-text" style="text-align:center;"> REGISTRATION </div>
+          <div>
+            <div style="text-align:center;">
+                <div>Please enter your email-id</div>
+                <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"  type="email" ng-model="regObj.email" /><br><br>
+
+                <div>Please enter your password</div>
+                <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;" 
+                ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/"  type="password" ng-model="regObj.password" /><br><br>
+                
+                <div>Preffered Username</div>
+                <input type="text" style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;" ng-model="regObj.username" />
+                <br>
+                <br>
+                <div>Please enter your First Name</div>
+                <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"  type="text" ng-model="regObj.first_name" /><br><br>
+                <div>Please enter your Last Name</div>
+                <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"  type="text" ng-model="regObj.last_name" /><br><br>
+
+                <button class="btn primary" ng-click="registerUser()">Register</button>
+            </div>
+        </div>
+      </div>   
+
+      <div ng-if="reg === 'success'">
+        <div class="active-text" style="text-align:center;padding-left:2%;padding-right:2%;"> Congratulations!! You are now registered with the username {{newUsername}} </div>
+      </div>
+
+      <div ng-if="reg === 'error'">
+        <div class="active-text" style="text-align:center;padding-left:2%;padding-right:2%;"> Something went wrong! Please try after sometime </div>
+    </div>
+</div>
+    
