@@ -14,7 +14,7 @@
 
                 <div>Please enter your password</div>
                 <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;" 
-                ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/"  type="password" ng-model="regObj.password" /><br><br>
+                ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/"  type="password" ng-model="regObj.password" ng-model-options="{ allowInvalid: true}" /><br><br>
                 
                 <div>Preffered Username</div>
                 <input type="text" style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;" ng-model="regObj.username" />
