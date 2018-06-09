@@ -1,4 +1,4 @@
-<div class="animated fadeIn">
+<div class="animated fadeIn" ng-if="!loggedOut">
 
 <div class="profile-picture">
   <img src="profile.png" />
@@ -52,6 +52,12 @@
           </div>
 
           <div class="item-list">
+            <div>CHANGE ACCOUNT
+            <span style="float:right;margin-right:2%;font-weight:bold;" ng-click="logOut()">LOGOUT</span>
+            </div>
+          </div>
+
+          <div class="item-list">
             <div>DELETE ACCOUNT
             <span style="float:right;margin-right:2%;color:red;font-weight:bold;">CONFIRM</span>
             </div>
@@ -61,4 +67,9 @@
   </div>
 
 
+</div>
+
+
+<div class="animated fadeIn" ng-if="loggedOut">
+You have successfully logged out!
 </div>
