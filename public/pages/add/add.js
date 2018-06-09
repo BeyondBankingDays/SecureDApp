@@ -31,7 +31,7 @@ angular.module('app.addController', ['ngFileUpload'])
                 var i=0;
 
                 angular.forEach($scope.files, function (file) {
-                    var backendUrl = 'http://172.16.23.143:8080/documents';
+                    var backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
 
                     var object = {};
                     object.docType = $scope.selectedDocType[i];
