@@ -1,4 +1,0 @@
-app.controller('headerController', function(){
-
-
-});

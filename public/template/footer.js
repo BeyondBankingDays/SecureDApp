@@ -1,4 +1,4 @@
-app.controller('footerController',['$scope', function($scope){
+angular.module('app.footerController',[]).controller('footerController',['$scope', function($scope){
 
     
 if($scope.page === '' || $scope.page === undefined){
