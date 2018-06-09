@@ -2,6 +2,11 @@ angular.module('app.registrationController', [])
     .controller('registrationController', ['$scope', '$http',
         '$location', '$timeout','$window', function ($scope, $http, $location, $timeout,$window) {
 
+            var isLoggedIn = localStorage.getItem('user_id');
+            if(isLoggedIn){
+                $location.path('/homepage').search({user_id: isLoggedIn});
+            }
+
         $scope.regObj = {
             password: '',
             username: '',
