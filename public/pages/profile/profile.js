@@ -3,6 +3,7 @@ angular.module('app.profileController',[])
 
     $scope.loggedOut = false;
         var providerId =  localStorage.getItem("user_id");
+        $scope.name = localStorage.getItem("username");
         $http.get('https://webapisecuredbb.azurewebsites.net/user/'+providerId).then(function(response){
         $scope.name = response.data.name;
         $scope.dob = response.data.dob;
@@ -12,6 +13,7 @@ angular.module('app.profileController',[])
 
     $scope.logOut = function(){
         localStorage.removeItem('user_id');
+        localStorage.removeItem('username');
         $scope.loggedOut = true;
         $timeout( function(){
             $location.path('/');

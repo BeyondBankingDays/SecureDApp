@@ -10,14 +10,14 @@
         <div>Username</div>
         <input type="text"
                style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"
-               ng-model="regObj.username"/>
+               ng-model="loginObj.username"/>
         <br>
         <br>
 
         <div>Password</div>
         <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"
-               ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{7,}$/" type="password"
-               ng-model="regObj.password" ng-model-options="{ allowInvalid: true}"/><br><br>
+               type="password"
+               ng-model="loginObj.password" /><br><br>
 
     <div >
         <button class="btn primary" ng-click="login()" >Login</button>
