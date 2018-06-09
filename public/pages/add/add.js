@@ -1,10 +1,12 @@
 angular.module('app.addController', ['ngFileUpload'])
     .controller('addController', ['$scope', '$http',
         function ($scope, $http) {
+        $scope.selectedDocType=[];
+            $scope.success=[];
 
             $scope.docTypes = [
                 'Passport',
-                'Driving Liscence',
+                'Driving License',
                 'Rental Agreement'
             ]
 
@@ -22,18 +24,18 @@ angular.module('app.addController', ['ngFileUpload'])
                         $scope.files.push(fileObject);
                     })
 
-                    console.log($scope.files[0])
                 }
             };
 
             $scope.uploadFiles = function () {
+                var i=0;
 
                 angular.forEach($scope.files, function (file) {
                     var backendUrl = 'http://172.16.23.143:8080/documents';
 
                     var object = {};
-                    object.docType = "passport";
-                    object.docName = "testPassport";
+                    object.docType = $scope.selectedDocType[i];
+                    object.docName = file.metaData.name;
                     object.userId = "testId";
 
                     var formData = new FormData();
@@ -41,7 +43,7 @@ angular.module('app.addController', ['ngFileUpload'])
                     formData.append('document', new Blob([documentObject], {
                         type: 'application/json'
                     }));
-                    formData.append('content', file);
+                    formData.append('content', file.content);
 
                     $http.post(backendUrl, formData, {
                         transformRequest: angular.identity,
@@ -49,13 +51,17 @@ angular.module('app.addController', ['ngFileUpload'])
                             'Content-Type': undefined
                         }
                     }).then(function (response) {
+                        $scope.success[i]=true;
+                        i=i+1;
                         console.log(response)
-                        alert('success');
                     }, function (rejection) {
+                        $scope.success[i]=false;
+                        i=i+1;
                         console.log(rejection)
-                        alert('error');
                     });
+
                 })
+
             }
 
         }]);

@@ -65,6 +65,12 @@ body{
 	height: 31px;
 }
 
+.checked-icon{
+    background: url('checked.svg') no-repeat -4px -37px;
+    width: 15px;
+    height: 15px;
+}
+
 .item-list{
     padding-top:5px;
     padding-bottom:5px;
