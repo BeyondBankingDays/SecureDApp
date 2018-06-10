@@ -19,7 +19,7 @@ angular.module('app.registrationController', [])
           .then(function (success) {
             $scope.registrationSuccess = true;
             $timeout(function () {
-              $location.path('/login');
+              $location.path('/#!login');
             }, 2000);
           }, function () {
             $scope.registrationFailed = true;
