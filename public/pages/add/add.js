@@ -18,7 +18,7 @@ angular.module('app.addController', ['ngFileUpload'])
 
         angular.forEach($scope.files, function (file) {
           let backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
-          $http.post(backendUrl, fetchFormData($scope.selectedDocType[i], file.metaData.name, localStorage.getItem('user_id')), {
+          $http.post(backendUrl, fetchFormData($scope.selectedDocType[uploadFileIterator], file.metaData.name, localStorage.getItem('user_id')), {
             transformRequest: angular.identity,
             headers: {
               'Content-Type': undefined
