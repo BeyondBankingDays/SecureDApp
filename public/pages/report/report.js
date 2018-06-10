@@ -18,10 +18,8 @@ function sortData(dataSet) {
     .map(filteredDocument => {
       return filteredDocument.requestors.map(requestor => {
         return {
-          documentName: filteredDocument.docName,
-          documentType: filteredDocument.docType,
-          requestorName: requestor.reqName,
-          requestedDate: requestor.date,
+          documentName: filteredDocument.docName, documentType: filteredDocument.docType,
+          requestorName: requestor.reqName, requestedDate: requestor.date,
           requestStatus: requestor.status
         }
       })
