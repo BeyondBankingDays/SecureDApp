@@ -7,7 +7,7 @@ angular.module('app.loginController', [])
 
       let isLoggedIn = localStorage.getItem('user_id');
       if (isLoggedIn) {
-        $location.path('/homepage').search({user_id: isLoggedIn});
+        $location.reload('/homepage').search({user_id: isLoggedIn});
       }
 
       $scope.loginObj = {};
@@ -38,7 +38,7 @@ angular.module('app.loginController', [])
                 localStorage.setItem('user_id', success.data.user_id);
                 localStorage.setItem('username', success.data.provider_id);
                 usSpinnerService.stop('spinner-1');
-                $location.path('/homepage');
+                $location.reload('/homepage');
               });
           }, function (rejection) {
             $scope.loginSuccess = false;
