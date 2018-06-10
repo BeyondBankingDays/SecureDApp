@@ -1,74 +1,72 @@
 <div class="animated fadeIn" ng-if="!loggedOut">
 
-<div class="profile-picture">
-  <img src="profile.png" />
-</div>
+    <div class="profile-picture">
+        <img src="profile.png"/>
+    </div>
 
-<br><br>
+    <br><br>
 
-  <div class="requests">
+    <div class="requests">
 
-      <div class="items" >
-          <div class="item-list" style="border-bottom:none;">
-            <div>NAME
-            <span style="float:right;margin-right:2%;">{{name}}</span>
+        <div class="items">
+            <div class="item-list" style="border-bottom:none;">
+                <div>NAME
+                    <span style="float:right;margin-right:2%;">{{name}}</span>
+                </div>
             </div>
-          </div>
 
-          <div class="item-list" style="border:0px;">
-            <div>DOB
-            <span style="float:right;margin-right:2%;">{{dob}}</span>
+            <div class="item-list" style="border:0px;">
+                <div>DOB
+                    <span style="float:right;margin-right:2%;">{{dob}}</span>
+                </div>
             </div>
-          </div>
-      </div>
-  </div>
-<br><br>
-  <div class="requests">
-      <span ><img src="settings.png" style="height: 30px;width:30px;"/></span>
+        </div>
+    </div>
+    <br><br>
+    <div class="requests">
+        <span>
+            <img src="settings.png" style="height: 30px;width:30px;"/>
+        </span>
 
-      <div class="items">
-          <div class="item-list" style="border:0px;">
-            <div>BLOCK ALL REQUESTS
-            <span style="float:right;margin-right:2%;">
+        <div class="items">
+            <div class="item-list" style="border:0px;">
+                <div>BLOCK ALL REQUESTS
+                    <span style="float:right;margin-right:2%;">
               <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
               </label>
             </span>
+                </div>
             </div>
-          </div>
 
-          <div class="item-list" style="border:0px;">
-            <div>CHANGE PASSWORD
-            <span style="float:right;margin-right:2%;">
-              <!-- <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-              </label> -->
+            <div class="item-list" style="border:0px;">
+                <div>CHANGE PASSWORD
+                    <span style="float:right;margin-right:2%;">
               CHANGE
             </span>
+                </div>
             </div>
-          </div>
 
-          <div class="item-list" style="border:0px;">
-            <div>CHANGE ACCOUNT
-            <span style="float:right;margin-right:2%;font-weight:bold;" ng-click="logOut()">LOGOUT</span>
+            <div class="item-list" style="border:0px;">
+                <div>CHANGE ACCOUNT
+                    <span style="float:right;margin-right:2%;font-weight:bold;" ng-click="logOut()">LOGOUT</span>
+                </div>
             </div>
-          </div>
 
-          <div class="item-list" style="border:0px;">
-            <div>DELETE ACCOUNT
-            <span style="float:right;margin-right:2%;color:red;font-weight:bold;">CONFIRM</span>
+            <div class="item-list" style="border:0px;">
+                <div>DELETE ACCOUNT
+                    <span style="float:right;margin-right:2%;color:red;font-weight:bold;">CONFIRM</span>
+                </div>
             </div>
-          </div>
-      </div>
+        </div>
 
-  </div>
+    </div>
 
 
 </div>
 
 
 <div class="animated fadeIn" ng-if="loggedOut">
-You have successfully logged out!
+    You have successfully logged out!
 </div>

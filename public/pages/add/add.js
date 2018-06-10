@@ -1,67 +1,61 @@
 angular.module('app.addController', ['ngFileUpload'])
-    .controller('addController', ['$scope', '$http',
-        function ($scope, $http) {
-        $scope.selectedDocType=[];
-            $scope.success=[];
+  .controller('addController', ['$scope', '$http',
+    function ($scope, $http) {
+      $scope.selectedDocType = [];
+      $scope.success = [];
 
-            $scope.docTypes = [
-                'Passport',
-                'Driving License',
-                'Rental Agreement'
-            ]
+      $scope.docTypes = [
+        'Passport',
+        'Driving License',
+        'Rental Agreement'
+      ];
 
-
-            $scope.files = [];
-            $scope.addFiles = function (files, errorFiles) {
-                if (files.length) {
-                    angular.forEach(files, function (file) {
-                        var fileObject = { metaData: undefined, content: undefined };
-                        fileObject.metaData = {
-                            name: file.name,
-                            fileType: file.type
-                        };
-                        fileObject.content = file;
-                        $scope.files.push(fileObject);
-                    })
-
-                }
+      $scope.files = [];
+      $scope.addFiles = function (files) {
+        if (files.length) {
+          $scope.files = files.map(val => function(){
+            let fileObject = {};
+            fileObject.metaData = {
+              name: file.name,
+              fileType: file.type
             };
+            fileObject.content = file;
 
-            $scope.uploadFiles = function () {
-                var i=0;
+            return fileObject;
+          });
+        }
+      };
 
-                angular.forEach($scope.files, function (file) {
-                    var backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
+      $scope.uploadFiles = function () {
+        let uploadFileIterator = 0;
 
-                    var object = {};
-                    object.docType = $scope.selectedDocType[i];
-                    object.docName = file.metaData.name;
-                    object.userId = localStorage.getItem("user_id");
+        angular.forEach($scope.files, function (file) {
+          let backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
 
-                    var formData = new FormData();
-                    var documentObject = JSON.stringify(object);
-                    formData.append('document', new Blob([documentObject], {
-                        type: 'application/json'
-                    }));
-                    formData.append('content', file.content);
+          let object = {};
+          object.docType = $scope.selectedDocType[i];
+          object.docName = file.metaData.name;
+          object.userId = localStorage.getItem('user_id');
 
-                    $http.post(backendUrl, formData, {
-                        transformRequest: angular.identity,
-                        headers: {
-                            'Content-Type': undefined
-                        }
-                    }).then(function (response) {
-                        $scope.success[i]=true;
-                        i=i+1;
-                        console.log(response)
-                    }, function (rejection) {
-                        $scope.success[i]=false;
-                        i=i+1;
-                        console.log(rejection)
-                    });
+          let formData = new FormData();
+          let documentObject = JSON.stringify(object);
+          formData.append('document', new Blob([documentObject], {
+            type: 'application/json'
+          }));
+          formData.append('content', file.content);
 
-                })
-
+          $http.post(backendUrl, formData, {
+            transformRequest: angular.identity,
+            headers: {
+              'Content-Type': undefined
             }
-
-        }]);
+          }).then(function () {
+            $scope.success[uploadFileIterator] = true;
+            uploadFileIterator = uploadFileIterator + 1;
+          }, function () {
+            $scope.success[uploadFileIterator] = false;
+            uploadFileIterator = uploadFileIterator + 1;
+          });
+        });
+      }
+    }]);
