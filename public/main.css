@@ -96,9 +96,10 @@ body{
     padding-bottom:3%;
   }
 
-.footer-item:hover{
+.footer-item-active{
     background-color:#e1b12c;
 }
+
 .section-active{
     background-color:#e1b12c;
 }

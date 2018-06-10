@@ -1,19 +1,14 @@
-angular.module('app.footerController',[]).controller('footerController',['$scope', function($scope){
+angular.module('app.footerController', []).controller('footerController', ['$scope', '$location', '$window', function ($scope, $location, $window) {
+  $scope.$watch(function () {
+    return $location.path();
+  }, function (newVal, oldVal) {
+    if(!$scope.activeMenu){
+      $scope.activeMenu = newVal;
+    } else if (newVal !== oldVal) {
+      $window.scrollTo(0,0);
+      $scope.activeMenu = newVal;
+    }
+  });
 
-var isLoggedIn = localStorage.getItem('user_id');
-
-if(!isUserLoggedIn){
-    $scope.hideFooter = true;
-}
-    
-if($scope.page === '' || $scope.page === undefined){
-    $scope.page = 'home';
-  }
-
-$scope.changepage = function(page){
-    $scope.page = page;
-  };
-
+  $scope.showFooter = localStorage.getItem('user_id') ? true : false;
 }]);
-
-
