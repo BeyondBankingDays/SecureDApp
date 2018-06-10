@@ -1,28 +1,15 @@
 angular.module('app.addController', ['ngFileUpload'])
-  .controller('addController', ['$scope', '$http',
-    function ($scope, $http) {
+  .controller('addController', ['$scope', '$http', 'DOCUMENTTYPES',
+    function ($scope, $http, DOCUMENTTYPES) {
       $scope.selectedDocType = [];
       $scope.success = [];
-
-      $scope.docTypes = [
-        'Passport',
-        'Driving License',
-        'Rental Agreement'
-      ];
-
       $scope.files = [];
+
+      $scope.docTypes = DOCUMENTTYPES;
+
       $scope.addFiles = function (files) {
         if (files.length) {
-          $scope.files = files.map(val => function(){
-            let fileObject = {};
-            fileObject.metaData = {
-              name: file.name,
-              fileType: file.type
-            };
-            fileObject.content = file;
-
-            return fileObject;
-          });
+          $scope.files = reStructureDocumentData(files);
         }
       };
 
@@ -31,20 +18,7 @@ angular.module('app.addController', ['ngFileUpload'])
 
         angular.forEach($scope.files, function (file) {
           let backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
-
-          let object = {};
-          object.docType = $scope.selectedDocType[i];
-          object.docName = file.metaData.name;
-          object.userId = localStorage.getItem('user_id');
-
-          let formData = new FormData();
-          let documentObject = JSON.stringify(object);
-          formData.append('document', new Blob([documentObject], {
-            type: 'application/json'
-          }));
-          formData.append('content', file.content);
-
-          $http.post(backendUrl, formData, {
+          $http.post(backendUrl, fetchFormData($scope.selectedDocType[i], file.metaData.name, localStorage.getItem('user_id')), {
             transformRequest: angular.identity,
             headers: {
               'Content-Type': undefined
@@ -59,3 +33,33 @@ angular.module('app.addController', ['ngFileUpload'])
         });
       }
     }]);
+
+function reStructureDocumentData(files){
+  return files.map(val => function(){
+    let fileObject = {};
+    fileObject.metaData = {
+      name: file.name,
+      fileType: file.type
+    };
+    fileObject.content = file;
+
+    return fileObject;
+  });
+}
+
+function fetchFormData(docType, docName, userId){
+  let formData = new FormData();
+
+  let object = {};
+  object.docType = docType;
+  object.docName = docName;
+  object.userId = userId;
+
+  let documentObject = JSON.stringify(object);
+  formData.append('document', new Blob([documentObject], {
+    type: 'application/json'
+  }));
+  formData.append('content', file.content);
+
+  return formData;
+}

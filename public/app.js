@@ -3,39 +3,27 @@ var app = angular.module('securedApp', ['ngRoute', 'angularSpinner', 'app.loginC
 angular.module('securedApp.controllers', []);
 
 app.config(function ($routeProvider, usSpinnerConfigProvider) {
-  usSpinnerConfigProvider.setDefaults({color: 'white', radius:8, width:2, length: 5});
+  usSpinnerConfigProvider.setDefaults({color: 'white', radius: 8, width: 2, length: 5});
+
+  let routeList = ['registration', 'add', 'report', 'access', 'profile', 'homepage'];
+
   $routeProvider
     .when('/', {
       templateUrl: 'pages/login/login.html',
       controller: 'loginController'
-    })
-
-    .when('/registration', {
-      templateUrl: 'pages/registration/registration.html',
-      controller: 'registrationController'
-    })
-
-    .when('/add', {
-      templateUrl: 'pages/add/add.html',
-      controller: 'addController'
-    })
-
-    .when('/report', {
-      templateUrl: 'pages/report/report.html',
-      controller: 'reportController'
-    })
-
-    .when('/access', {
-      templateUrl: 'pages/access/access.html',
-      controller: 'accessController'
-    })
-
-    .when('/profile', {
-      templateUrl: 'pages/profile/profile.html',
-      controller: 'profileController'
-    })
-    .when('/homepage', {
-      templateUrl: 'pages/homepage/homepage.html',
-      controller: 'homepageController'
     });
+
+  angular.forEach(routeList, function(route){
+    $routeProvider
+      .when('/' + route, {
+        templateUrl: 'pages/'+ route +'/' + route + '.html',
+        controller: route + 'Controller'
+      });
+  });
 });
+
+app.constant('DOCUMENTTYPES', [
+  'Passport',
+  'Driving License',
+  'Rental Agreement'
+]);
