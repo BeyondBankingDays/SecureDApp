@@ -18,10 +18,8 @@ angular.module('app.registrationController', [])
         $http.post('https://beyondbanking.openbankproject.com/obp/v2.0.0/users', JSON.stringify($scope.regObj))
           .then(function (success) {
             $scope.registrationSuccess = true;
-            localStorage.setItem("user_id", success.data.user_id);
-            localStorage.setItem("username", success.data.provider_id);
             $timeout(function () {
-              $location.path('/homepage').search({user_id: success.data.user_id});
+              $location.path('/login');
             }, 2000);
           }, function () {
             $scope.registrationFailed = true;
