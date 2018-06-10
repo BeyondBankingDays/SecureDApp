@@ -7,9 +7,17 @@ angular.module('app.addController', ['ngFileUpload'])
 
       $scope.docTypes = DOCUMENTTYPES;
 
-      $scope.addFiles = function (files) {
+      $scope.addFiles = function (files, errorFiles) {
         if (files.length) {
-          $scope.files = reStructureDocumentData(files);
+          angular.forEach(files, function (file) {
+            let fileObject = { metaData: undefined, content: undefined };
+            fileObject.metaData = {
+              name: file.name,
+              fileType: file.type
+            };
+            fileObject.content = file;
+            $scope.files.push(fileObject);
+          })
         }
       };
 
@@ -18,7 +26,7 @@ angular.module('app.addController', ['ngFileUpload'])
 
         angular.forEach($scope.files, function (file) {
           let backendUrl = 'https://webapisecuredbb.azurewebsites.net/documents';
-          $http.post(backendUrl, fetchFormData($scope.selectedDocType[uploadFileIterator], file.metaData.name, localStorage.getItem('user_id')), {
+          $http.post(backendUrl, fetchFormData($scope.selectedDocType[uploadFileIterator], file.metaData.name, localStorage.getItem('user_id'), file.content), {
             transformRequest: angular.identity,
             headers: {
               'Content-Type': undefined
@@ -34,20 +42,8 @@ angular.module('app.addController', ['ngFileUpload'])
       }
     }]);
 
-function reStructureDocumentData(files){
-  return files.map(val => function(){
-    let fileObject = {};
-    fileObject.metaData = {
-      name: file.name,
-      fileType: file.type
-    };
-    fileObject.content = file;
 
-    return fileObject;
-  });
-}
-
-function fetchFormData(docType, docName, userId){
+function fetchFormData(docType, docName, userId, content){
   let formData = new FormData();
 
   let object = {};
@@ -59,7 +55,7 @@ function fetchFormData(docType, docName, userId){
   formData.append('document', new Blob([documentObject], {
     type: 'application/json'
   }));
-  formData.append('content', file.content);
+  formData.append('content', content);
 
   return formData;
 }

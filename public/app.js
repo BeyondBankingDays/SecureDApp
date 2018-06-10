@@ -22,6 +22,19 @@ app.config(function ($routeProvider, usSpinnerConfigProvider) {
   });
 });
 
+app.run(function($rootScope){
+  $rootScope.$on('$locationChangeSuccess', function () {
+    if(!$rootScope.userId && localStorage.getItem('user_id')){
+      $rootScope.userId = localStorage.getItem('user_id');
+    }
+  });
+  $rootScope.$watch('userId', function(newVal, oldVal){
+    if(newVal && newVal !== oldVal){
+      $rootScope.showFooter = true;
+    }
+  });
+});
+
 app.constant('DOCUMENTTYPES', [
   'Passport',
   'Driving License',
