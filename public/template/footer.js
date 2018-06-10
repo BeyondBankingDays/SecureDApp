@@ -12,5 +12,5 @@ angular.module('app.footerController', [])
         }
       });
 
-      $scope.showFooter = !!localStorage.getItem('user_id');
+      $scope.showFooter = localStorage.getItem('user_id') ? true : false;
     }]);
