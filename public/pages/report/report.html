@@ -1,0 +1,19 @@
+<div class="animated fadeIn">
+    <div class="filter">
+        <div class="row">Last 10 activities</div>
+    </div>
+    <br>
+
+    <div class="items" id="doclist">
+        <div class="item-list row">
+            <span style="margin-left:1%;"> Requestor</span>
+            <span style="margin-left:5%;"> Document</span>
+            <span style="margin-left:5%;"> Document Type</span>
+        </div>
+        <div class="item-list" ng-repeat="doc in docItems">
+            <span style="margin-left:1%;"> {{doc.requestorName}}</span>
+            <span style="margin-left:5%;"> {{doc.documentName}}</span>
+            <span style="margin-left:5%;"> {{doc.documentType}}</span>
+        </div>
+    </div>
+</div>

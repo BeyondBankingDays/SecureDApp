@@ -14,23 +14,13 @@
     <br>
 
     <div class="items" id="doclist">
-        <div class="item-list" ng-repeat="document in data track by $index" ng-click="open=!open">
+        <div class="item-list" ng-repeat="document in data track by $index">
             <span style="margin-left:5%;">{{document.name}}</span>
             <span style="margin-left:17%;"> <a target="_blank"
                                                ng-href="https://webapisecuredbb.azurewebsites.net/documents/{{document.id}}/content">
                 View</a></span>
             <span style="float:right; margin-right: 5%">{{document.docType}}</span>
 
-            <br>
-            <div ng-init="!open" ng-if="open">
-
-                <div class="items">
-                    <div class="item-list" ng-repeat="req in document.requestors">
-                        <span style="margin-left:5%;"> {{req.reqName}}</span>
-                        <span style="margin-left:20%;"> {{req.date}}</span>
-                        <span style="margin-left:20%;"> {{req.status}}</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+</div>

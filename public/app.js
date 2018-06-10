@@ -1,5 +1,5 @@
 var app = angular.module('securedApp', ['ngRoute', 'angularSpinner', 'app.loginController', 'app.homepageController', 'app.addController',
-  'app.accessController', 'app.profileController', 'app.footerController', 'app.registrationController']);
+  'app.accessController', 'app.reportController', 'app.profileController', 'app.footerController', 'app.registrationController']);
 angular.module('securedApp.controllers', []);
 
 app.config(function ($routeProvider, usSpinnerConfigProvider) {
@@ -18,6 +18,11 @@ app.config(function ($routeProvider, usSpinnerConfigProvider) {
     .when('/add', {
       templateUrl: 'pages/add/add.html',
       controller: 'addController'
+    })
+
+    .when('/report', {
+      templateUrl: 'pages/report/report.html',
+      controller: 'reportController'
     })
 
     .when('/access', {

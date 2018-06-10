@@ -3,8 +3,8 @@ angular.module('app.accessController', [])
     function ($scope, $http) {
 
       $scope.selectedFilter = 'request';
-      let providerId = localStorage.getItem("user_id");
-      $http.get('https://webapisecuredbb.azurewebsites.net/user/' + providerId + '/documents')
+
+      $http.get('https://webapisecuredbb.azurewebsites.net/user/' + localStorage.getItem("user_id") + '/documents')
         .then(function (success) {
           $scope.data = success.data;
         });
