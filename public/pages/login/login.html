@@ -3,13 +3,13 @@
         <div ng-if="!loginSuccess"><span class="active-text">{{loginErrorMsg}}</span></div>
         <div>Username</div>
         <input type="text"
-               style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"
+               class="form-input"
                ng-model="loginObj.username"/>
         <br>
         <br>
 
         <div>Password</div>
-        <input style=" background-color: transparent;border: 0;border-bottom: 1px solid white;width: 50%;"
+        <input class="form-input"
                type="password"
                ng-model="loginObj.password"/><br><br>
 
@@ -20,7 +20,7 @@
 
     </div>
 
-    <div style="text-align: center; margin-top:5%;">
+    <div class="center">
         <span><a href="/#!registration"
                  style="text-align: center;">Register</a></span>
     </div>

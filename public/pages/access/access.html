@@ -1,9 +1,7 @@
 <div class="animated fadeIn">
     <div class="filter">
         <div class="row">My Documents
-            <span style="float:right;margin-right:5%;cursor: pointer;"
-                  ng-class="{'active-text': selectedFilter === 'document'}"
-                  ng-click="changeSelection('document')">Types</span>
+            <span class="right">Types</span>
         </div>
     </div>
     <br>
@@ -19,7 +17,7 @@
             <span style="margin-left:17%;"> <a target="_blank"
                                                ng-href="https://webapisecuredbb.azurewebsites.net/documents/{{document.id}}/content">
                 View</a></span>
-            <span style="float:right; margin-right: 5%">{{document.docType}}</span>
+            <span class="right">{{document.docType}}</span>
 
         </div>
     </div>

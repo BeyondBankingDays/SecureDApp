@@ -11,13 +11,13 @@
         <div class="items">
             <div class="item-list" style="border-bottom:none;">
                 <div>NAME
-                    <span style="float:right;margin-right:2%;">{{name}}</span>
+                    <span class="account-option">{{name}}</span>
                 </div>
             </div>
 
             <div class="item-list" style="border:0px;">
                 <div>DOB
-                    <span style="float:right;margin-right:2%;">{{dob}}</span>
+                    <span class="account-option">{{dob}}</span>
                 </div>
             </div>
         </div>
@@ -25,13 +25,13 @@
     <br><br>
     <div class="requests">
         <span>
-            <img src="settings.png" style="height: 30px;width:30px;"/>
+            <img src="settings.png" class="setting-icon"/>
         </span>
 
         <div class="items">
             <div class="item-list" style="border:0px;">
                 <div>BLOCK ALL REQUESTS
-                    <span style="float:right;margin-right:2%;">
+                    <span class="account-option">
               <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
@@ -42,7 +42,7 @@
 
             <div class="item-list" style="border:0px;">
                 <div>CHANGE PASSWORD
-                    <span style="float:right;margin-right:2%;">
+                    <span class="account-option">
               CHANGE
             </span>
                 </div>
@@ -50,13 +50,13 @@
 
             <div class="item-list" style="border:0px;">
                 <div>CHANGE ACCOUNT
-                    <span style="float:right;margin-right:2%;font-weight:bold;" ng-click="logOut()">LOGOUT</span>
+                    <span class="account-option" ng-click="logOut()">LOGOUT</span>
                 </div>
             </div>
 
             <div class="item-list" style="border:0px;">
                 <div>DELETE ACCOUNT
-                    <span style="float:right;margin-right:2%;color:red;font-weight:bold;">CONFIRM</span>
+                    <span class="account-option">CONFIRM</span>
                 </div>
             </div>
         </div>
