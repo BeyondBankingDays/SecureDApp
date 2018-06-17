@@ -3,7 +3,7 @@ angular.module('app.reportController', [])
     function ($scope, $http) {
 
       let userId = localStorage.getItem("user_id");
-      $http.get('https://webapisecuredbb.azurewebsites.net/user/' + userId + '/documents')
+      $http.get('https://websecuredapi.azurewebsites.net/user/' + userId + '/documents')
         .then(function (success) {
           let documentsData = success.data;
 

@@ -5,7 +5,7 @@ angular.module('app.profileController', [])
       let providerId = localStorage.getItem("user_id");
       $scope.name = localStorage.getItem("username");
 
-      $http.get('https://webapisecuredbb.azurewebsites.net/user/' + providerId)
+      $http.get('https://websecuredapi.azurewebsites.net/user/' + providerId)
         .then(function (response) {
           $scope.name = response.data.name;
           $scope.dob = response.data.dob;

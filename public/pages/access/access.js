@@ -4,7 +4,7 @@ angular.module('app.accessController', [])
 
       $scope.selectedFilter = 'request';
 
-      $http.get('https://webapisecuredbb.azurewebsites.net/user/' + localStorage.getItem("user_id") + '/documents')
+      $http.get('https://websecuredapi.azurewebsites.net/user/' + localStorage.getItem("user_id") + '/documents')
         .then(function (success) {
           $scope.data = success.data;
         });
