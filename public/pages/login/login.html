@@ -1,5 +1,6 @@
 <div class="animated fadeIn">
     <div style="text-align:center;">
+        <form>
         <div ng-if="!loginSuccess"><span class="active-text">{{loginErrorMsg}}</span></div>
         <div>Username</div>
         <input type="text"
@@ -17,7 +18,7 @@
             <span ng-if="!isAuthenticating">Login</span><span
                 us-spinner spinner-key="spinner-1"></span>
         </div>
-
+    </form>
     </div>
 
     <div class="center">
